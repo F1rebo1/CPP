@@ -9,15 +9,16 @@ class Log{
         Log(){
             X = 77;
             Y = 69;
+            cout << "Created!" << endl;
         }
 
         enum Level{
             LevelError = 0, LevelWarning, LevelInformation
         };
 
-        // const int logLevelError = 0;
-        // const int logLevelWarning = 1;
-        // const int logLevelInfo = 2;
+        ~Log(){
+            cout << "Destroyed!" << endl;
+        }
 
     private:
         Level m_warningLevel = LevelInformation;

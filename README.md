@@ -52,5 +52,11 @@ When linking together multiple different files, simply include them one after th
 # Constructors
 
 - We can initialize a constructor by simply declaring a "typeless function" within the body of the class. For instance, if we declared a class: `class Food{};`
-  we would then be able to declare our consctructor within like so: `class Food{ public: Food(){ ~Any (variable) initialization can go here~ } };`
+  we would then be able to declare our constructor within like so: `class Food{ public: Food(){ --Any (variable) initialization can go here-- } };`
 - This works so long as we do not make our constructor static, in which case the same type of constraints are applied to it as in the section on static methods above
+
+# Destructors
+
+- We can initialize a destructor by simply declaring a "typeless function" within the body of the class. For instance, if we declared a class: `class Food{};`
+  we would then be able to declare our destructor within like so: `class Food{ public: ~Food(){ --Any (variable) teardown can go here-- } };`
+- The difference between the constructor and destructor syntax is the existence of the `~` in front of the destructor method name.
