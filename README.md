@@ -60,3 +60,10 @@ When linking together multiple different files, simply include them one after th
 - We can initialize a destructor by simply declaring a "typeless function" within the body of the class. For instance, if we declared a class: `class Food{};`
   we would then be able to declare our destructor within like so: `class Food{ public: ~Food(){ --Any (variable) teardown can go here-- } };`
 - The difference between the constructor and destructor syntax is the existence of the `~` in front of the destructor method name.
+
+## Inheritance
+
+- A class can inherit the member variables and functions of another class with the following syntax.
+  Assuming the parent class to be: `class Entity{ public: int X,Y };`, we can declare a subclass called Player like so:
+  `class Player : public Entity { public: int Z };`. This Player class inherits all the variables/methods in Entity, and can also be extended further to incorporate
+  new methods/variables that are specific to it.

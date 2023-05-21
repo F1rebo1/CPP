@@ -3,12 +3,24 @@
 
 using namespace std;
 
-struct Entity{
-    int x, y;
-    
-    void Print(){
-        cout << x << ", " << y << endl;
-    }
+class Entity{
+    public:
+        int x, y;
+        
+        void Print(){
+            cout << x << ", " << y << endl;
+        }
+};
+
+class Player : public Entity{
+    public:
+        void PrintName(const char* message){
+            cout << "My name is " << message << endl;
+        }
+
+        void PrintPosition(){
+            cout << "Position is: " << x << ", " << y << endl;
+        }
 };
 
 // int Entity::x;
@@ -26,5 +38,11 @@ int main(){
 
     e.Print();
     e1.Print();
+
+    Player p1;
+    p1.x = 20;
+    p1.y = 5;
+    p1.PrintName("Rohan");
+    p1.PrintPosition();
 
 }
