@@ -1,5 +1,6 @@
 #include <iostream>
+#include "../include/Log.h"
 
-void Log(const char* message){
-    std::cout << message << std::endl;
+int main(){
+    std::cout << LogMultiplyMessage(6,9) << std::endl;
 }
