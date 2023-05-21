@@ -4,6 +4,12 @@ using namespace std;
 class Log{
 
     public:
+        int X, Y;
+
+        Log(){
+            X = 77;
+            Y = 69;
+        }
 
         enum Level{
             LevelError = 0, LevelWarning, LevelInformation
@@ -35,10 +41,15 @@ class Log{
             if(m_warningLevel >= LevelInformation)
                 cout << "[INFO] " << message << endl;
         }
+
+        void Print(){
+            cout << X << ", " << Y << endl;
+        }
 };
 
 int main(){
     Log log;
+    log.Print();
 
     // int level;
     // cout << "Enter message type level" << endl;

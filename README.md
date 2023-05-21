@@ -1,4 +1,4 @@
-# CPP
+#### CPP
 ## Build and Compile Instructions
 
 The quick build command is `Ctrl+Shift+B` --> following this select "C/C++ g++.exe build active file"
@@ -9,7 +9,14 @@ When linking together multiple different files, simply include them one after th
 
 ## Notes
 
-There is a different between `cin` and `cin.get()`. Use `cin >> varName` when trying to pass in numerical input from keyboard into a variable.
+## Namespace
+
+- Adding a `using namespace std` to the top of the file eliminates the need to type `std::cout` etc. all the time, instead replacing it with `cout` alone.
+- Should be used carefully though, and perhaps should not be used for larger projects.
+
+# cin
+
+- There is a different between `cin` and `cin.get()`. Use `cin >> varName` when trying to pass in numerical input from keyboard into a variable.
 
 # Pointers and References
 
@@ -41,3 +48,9 @@ There is a different between `cin` and `cin.get()`. Use `cin >> varName` when tr
 
 - The `enum` keyword is used to group a collection of related variables (which take on integer values), automatically initializing each variable to carry
   a sequential value to the previous variable
+
+# Constructors
+
+- We can initialize a constructor by simply declaring a "typeless function" within the body of the class. For instance, if we declared a class: `class Food{};`
+  we would then be able to declare our consctructor within like so: `class Food{ public: Food(){ ~Any (variable) initialization can go here~ } };`
+- This works so long as we do not make our constructor static, in which case the same type of constraints are applied to it as in the section on static methods above
