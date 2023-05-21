@@ -25,3 +25,19 @@ There is a different between `cin` and `cin.get()`. Use `cin >> varName` when tr
 - A struct is public by default, and we need to include the `private:` keyword in order to have the variables and methods of the struct kept private
 - We declare a class like so: `class Player{};`
 - We declare a struct like so: `struct GroupVars{};`
+
+# Static for variables, classes and structs
+
+- Marking a variable with the `static` keyword ensures the variable is not available globally
+- The static keyword also ensures that the linker does not pick up the variable (if another variable with the same name exists in a different file), and so does not lead to a compilation error
+- If a static variable is defined in a different file, and you want to refer to that same variable in a different translation unit, this can be done with the `extern` keyword like so:
+  File 1: `static int s_Var = 5` | File 2: `extern int s_Var`.
+
+- Static variables that are inside a class are shared between class instances (i.e. instantiating two different class objects will still share the same static class variables)
+- Static methods are similar to the above. Static methods also cannot access non-static variables.
+- Normally, nonstatic methods have a member of the instantiated class passed to them by default. This is not the case for static methods, which instead explicitly need an object passed to them.
+
+# Enum
+
+- The `enum` keyword is used to group a collection of related variables (which take on integer values), automatically initializing each variable to carry
+  a sequential value to the previous variable
