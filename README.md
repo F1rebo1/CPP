@@ -13,6 +13,7 @@ When linking together multiple different files, simply include them one after th
 
 - Adding a `using namespace std` to the top of the file eliminates the need to type `std::cout` etc. all the time, instead replacing it with `cout` alone.
 - Should be used carefully though, and perhaps should not be used for larger projects.
+- Adding a `using String std::string;` allows us to define a `String` data type
 
 ## cin
 
@@ -54,6 +55,7 @@ When linking together multiple different files, simply include them one after th
 - We can initialize a constructor by simply declaring a "typeless function" within the body of the class. For instance, if we declared a class: `class Food{};`
   we would then be able to declare our constructor within like so: `class Food{ public: Food(){ --Any (variable) initialization can go here-- } };`
 - This works so long as we do not make our constructor static, in which case the same type of constraints are applied to it as in the section on static methods above
+- Look at the section below titled "Special C++ Syntax"
 
 ## Destructors
 
@@ -67,3 +69,12 @@ When linking together multiple different files, simply include them one after th
   Assuming the parent class to be: `class Entity{ public: int X,Y };`, we can declare a subclass called Player like so:
   `class Player : public Entity { public: int Z };`. This Player class inherits all the variables/methods in Entity, and can also be extended further to incorporate
   new methods/variables that are specific to it.
+
+## Special C++ Syntax
+
+- The use of the `:` (member initializer list) for constructors is special syntax to initialize class member variables (public, private or otherwise) prior to the
+  execution of the body of the constructor.
+- Imagine we have an Entity class with the following constructor: `Entity() : m_Name("Unknown") {};`. In this example, we assign the String "Unknown" to the private
+  variable m_Name prior to the execution of the constructor body (which is empty here).
+
+- The `::` (scope resolution operator) is used to access members (functions, variables, types) that are defined within a specific scope
