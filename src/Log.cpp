@@ -4,6 +4,22 @@
 using namespace std;
 using String = std::string;
 
+class MyInterface{
+    public:
+        virtual String PrintClassname() = 0;
+};
+
+void Print(MyInterface* ptr){
+    std::cout << ptr->PrintClassname() << std::endl;
+}
+
+class A : public MyInterface{
+    public:
+        String PrintClassname() override {
+            return "We at A!";
+        }
+};
+
 class Entity{
     private:
         String m_Name;
@@ -41,23 +57,6 @@ class Player : public Entity{
 
 int main(){
     
-    Entity e;
-    e.x = 1;
-    e.y = 2;
-
-    Entity e1;
-    e1.x = 6;
-    e1.y = 9;
-
-    e.Print();
-    e1.Print();
-
-    Player p1;
-    p1.x = 20;
-    p1.y = 5;
-    p1.PrintName("Rohan");
-    p1.PrintPosition();
-    
-    Entity entity;
+    Print(new A());
 
 }
