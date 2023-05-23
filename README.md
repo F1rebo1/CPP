@@ -70,6 +70,29 @@ When linking together multiple different files, simply include them one after th
   `class Player : public Entity { public: int Z };`. This Player class inherits all the variables/methods in Entity, and can also be extended further to incorporate
   new methods/variables that are specific to it.
 
+
+## The virtual and override keyword
+
+- The `virtual` keyword is used before a function definition like so: `virtual void ExampleFunc(){}`
+- It is used in the parent class, and its purpose is to allow any subclasses to make use of that function for its own class type (to be overriden)
+- When a subclass utilizes its parent's `virtual` function, we can include the `override` keyword like so (in the subclass): `void ExampleFunc() override {}`
+## The 'new' keyword
+
+- The `new` keyword is used when declaring a new instance of a class/object, like so: `MyClass* classObj = new MyClass();`
+- Specifically, it allocates space for the declared instance on the heap, and calls the constructor for the instance, returning a pointer to the start location in
+  memory on the heap
+- Whenever the `new` keyword is used, the `delete` keyword must also be used in order to free the memory and avoid memory leaks, like so: `delete classObj;`
+
+## Interfaces/Pure Virtual Classes
+
+- An interface (which is simply another class in C++), is used to provide a list of functions that must be implemented by any subclasses of that (interface) parent
+- The functions within an interface (class) do not have an implementation, and instead force the/any subclasses to provide their own implementation for all of the
+  member functions of the interface class
+- The `virtual` keyword is used before the function signature again, but there is no implementation and instead the function is set equal to 0, like so:
+  `virtual void ExampleFunc() = 0;`
+- When a class implements the parent interface class (for instance if the interface is called `class MyInterfaceClass{};`, then a subclass would inherit/implement the
+  interface by: `class MyImpl : public MyInterfaceClass`), it must provide its own implementation of each function, and can utilize the `override` keyword
+
 ## Special C++ Syntax
 
 - The use of the `:` (member initializer list) for constructors is special syntax to initialize class member variables (public, private or otherwise) prior to the

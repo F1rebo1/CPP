@@ -5,16 +5,20 @@ using String = std::string;
 class Supermarket{
     private:
         int m_CurAisle = 1;
-        String m_SupermarketName;
+        String m_SupermarketName = "Costco";
     public:
         enum Aisle{
             foodAisle = 1, drinkAisle, cerealAisle, bakeryAisle
         };
     public:
-        Supermarket() : m_CurAisle(1), m_SupermarketName("Bostco") {}
+        Supermarket() : m_CurAisle(1), m_SupermarketName("Costco") {}
 
-        String getMarketName(){
-            return m_SupermarketName;
+        // String getMarketName(){
+        //     return m_SupermarketName;
+        // }
+
+        virtual String PrintBoi(){
+            return "PrintBoi Supermarket";
         }
 
         Aisle getAisleEnum(int aisle){
@@ -64,11 +68,21 @@ class Food : public Supermarket{
     public:
         Food() : m_foodId(1) {}
 
-        Food(const char* item) : m_foodName(item), m_quantity(1){}
+        // Food(String item) : m_foodName(item){
+        //     Food newFood(item);
+        //     newFood.m_quantity = rand() % 100 + 1;
+        // }
 
-        int GetQtyFood(Food* foodItem){
+        Food(String item) : m_foodName(item), m_quantity(1){}
+
+        String PrintBoi() {
+            return "PrintBoi Food";
+        }
+
+        void GetQtyFood(Food* foodItem){
             std::cout << "Reached GetQtyFood" << std::endl;
-            std::cout << foodItem->m_foodName << std::endl;
+            // std::cout << foodItem->m_foodName << std::endl;
+            std::cout << "We currently have " << foodItem->m_quantity << " units of " << (*foodItem).m_foodName << " left in stock" << std::endl;
         }
 
         void GetFoodItem(Food* foodName){
@@ -89,38 +103,16 @@ class Food : public Supermarket{
 
 int main(){
 
-    struct foodVars{
-        int val;
-        String foodName;
-        Food food;
-    };
+    Supermarket* sm = new Supermarket();
+    std::cout << sm->PrintBoi() << std::endl;
 
-    struct foodPointers{
-        Food* food;
-    };
+    Food* f = new Food();
+    std::cout << f->PrintBoi() << std::endl;
 
-    Supermarket aisle = Supermarket();
-    foodVars foodVar;
-    foodPointers foodPtr;
-    foodPtr.food = &foodVar.food;
+    Supermarket* fp = f;
+    std::cout << fp->PrintBoi() << std::endl;
 
-    std::cout << "Welcome to " << aisle.getMarketName() << ". Which Aisle would you like to enter?" << std::endl;
-    std::cout << "1. Food" << std::endl;
-    std::cout << "2. Drink" << std::endl;
-    std::cout << "3. Cereal" << std::endl;
-    std::cout << "4. Bakery" << std::endl;
-    std::cout << "" << std::endl;
-    std::cin >> foodVar.val;
-
-    aisle.SetCurAisle(aisle.getAisleEnum(foodVar.val));
-
-    std::cout << "What food are you looking for today?" << std::endl;
-    std::cin >> foodVar.foodName;
-    foodVar.food.GetAisle(foodVar.food);
-    std::cout << "Excellent, let us check the stock for " << foodVar.foodName << "!" << std::endl;
-    foodVar.food.SetFoodName(foodVar.foodName);
-    foodVar.food.GetQtyFood(foodPtr.food);
-    // std::cout << "We currently have " << foodVar.food.GetQtyFood(foodPtr.food) << " units left in stock" << std::endl;
-
+    delete sm;
+    delete f;
     return 0;
 }
