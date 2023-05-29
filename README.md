@@ -93,6 +93,40 @@ When linking together multiple different files, simply include them one after th
 - When a class implements the parent interface class (for instance if the interface is called `class MyInterfaceClass{};`, then a subclass would inherit/implement the
   interface by: `class MyImpl : public MyInterfaceClass`), it must provide its own implementation of each function, and can utilize the `override` keyword
 
+## Visibility
+
+- `Private`: only this class and its Friend class can access Private attributes
+- `Protect`: only this class and its subclass can access Protect attributes
+- `Public`: everything can access Public attributes
+
+## Arrays
+
+- For C++11 onwards, include `#include <array>` at the top of the file
+- You can then declare an array with the type and size like so: `std::array<int,5> arrName;` and use built-in functions like `arrName.size()`
+- When declaring a raw array, we can do so by initializing with type and size like so: `int arr[5];` This will allocate 5 * 4 bytes of contiguous memory for the array
+- Initializing a raw array like this returns a pointer to the starting memory address of the array, and so we can assign a pointer (of the correct type) to point to
+  this like so: `int* arrPtr = arr;`
+- If we want to manipulate array values using the pointer we can do this like so: `*(arrPtr + position) = 5;`. In this example, the `position` is really the number of
+  bytes away from the start of the array we are positioning the pointer to make the change at. This number is scaled by the type of the pointer, so in the case of our
+  `int* arrPtr` above, if we had `position = 3` then we would be positioning our pointer such that it points 12 bytes into the array (at index 3)
+- To calculate the size (i.e. arr.length equivalent) of a raw array, we would need to calculate the size of the entire array, divided by the size of one value, like:
+  `int count = sizeof(arr) / sizeof(int)`
+- An easy way of having this count/size on hand (so that we can more easily use this value in for loops etc.) is to declare the size in our class like so:
+  `static const int exampleSize = 5`, and then to define the array as: `int arr[exampleSize]`. If this value is not static this will not work, as otherwise an actual
+  constant value would need to be passed into the array for run time compilation
+
+## Strings
+
+- A string (in C) can be defined by a pointer: `char* strName`. Normally we want to make it a `const char* strName` as Strings are immutable. If we ommit the const,
+  however, we might be able to manipulate individual characters of the string, but this is not good behavior so we should avoid this
+- In C++, we can include `using String = std::string;` so that we can simply initialize Strings like so: `String myStr = "Hello"`. It is important to use double quotes
+  when initializing a string
+
+## String Literals
+
+- A string literal (something like `"Rohan;"`) is actually a const char array (i.e. could be written as: `const char name[6] = "Rohan";`)
+- This could also be assigned to a pointer, i.e. `const char* name = "Rohan";`
+
 ## Special C++ Syntax
 
 - The use of the `:` (member initializer list) for constructors is special syntax to initialize class member variables (public, private or otherwise) prior to the
