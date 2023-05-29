@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../include/Log.h"
+#include <array>
 
 using namespace std;
 using String = std::string;
@@ -59,4 +60,24 @@ int main(){
     
     Print(new A());
 
+    int myArr[6];
+    int size = sizeof(myArr) / sizeof((typeid(myArr).name()));
+    int* myArrPtr = myArr;
+
+    for(int j = 0; j < size; j++){
+        myArr[j] = 6;
+        std::cout << myArr[j] << std::endl;
+        myArrPtr[j] = 9;
+        std::cout << myArr[j] << std::endl;
+    }
+
+    *(myArrPtr + 3) = 5;
+    std::cout << myArr[3] << std::endl;
+
+    std::array<int,5> arr;
+    for(int i = 0; i < arr.size(); i++){
+        std::cout << "Hello!" << std::endl;
+    }
+
+    return 0;
 }
